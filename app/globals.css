@@ -168,6 +168,18 @@ main { min-height: 70vh; }
 .blog-steps li::marker { color: var(--brand); font-size: 18px; font-weight: 900; }
 .blog-steps h3 { margin: 0 0 8px; font-size: 20px; }
 .blog-steps p { margin: 0; color: #4f5a57; }
+.deep-section > p { margin: 14px 0; }
+.article-table-wrap { width: 100%; margin: 24px 0 30px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.article-table { width: 100%; min-width: 620px; border-collapse: collapse; background: var(--white); font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: 15px; line-height: 1.65; }
+.article-table th, .article-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.article-table th { color: #29423d; background: #eef5f2; font-family: var(--font-sans); font-size: 13px; font-weight: 850; }
+.article-table tbody tr:last-child td { border-bottom: 0; }
+.article-note { margin-top: 24px !important; padding: 18px 20px; color: #5b4b32 !important; background: #fff7e8; border-left: 4px solid #d79d45; border-radius: 4px; }
+.article-sources { margin-top: 14px; padding-bottom: 6px; border-top: 1px solid var(--line); }
+.article-sources h2 { font-size: 24px !important; }
+.article-sources ul { margin: 12px 0 0; padding-left: 1.2em; }
+.article-sources li { margin: 8px 0; }
+.article-sources a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
 .blog-article .cta-box { margin-top: 58px; border-radius: 4px; }
 .blog-article .faq-list summary { font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; }
 .search-page { max-width: 850px; min-height: 70vh; }

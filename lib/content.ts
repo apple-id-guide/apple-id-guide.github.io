@@ -1,3 +1,6 @@
+import { deepArticleContent, type DeepArticleContent } from "./deep-content";
+import { deepArticleAdditions, deepArticleFinalSections } from "./deep-additions";
+
 export type Faq = { q: string; a: string };
 
 export type PromotionType =
@@ -20,6 +23,7 @@ export type Article = {
   steps: { title: string; body: string }[];
   faqs: Faq[];
   cta?: PromotionType;
+  deep?: DeepArticleContent;
 };
 
 export const categories = [
@@ -211,7 +215,7 @@ const expansionArticles = expansionSpecs.map(([category, slug, title, answer, ch
   },
 ));
 
-export const articles: Article[] = [
+const baseArticles: Article[] = [
   article("apple-id", "change-region", "Apple ID 怎么改地区？iPhone 完整操作步骤", "Apple ID 怎么改国家或地区？先处理余额、订阅和家庭共享，再按照本文步骤在 iPhone 或网页端修改。", "Apple ID 改地区前，先把账户余额用完、取消会挡住切换的订阅并退出家庭共享。条件满足后，再进入“媒体与购买项目”修改国家或地区。", ["账户余额是否已经为零", "订阅是否真正到期", "是否还在家庭共享中", "有没有未完成的退款、预购或租借", "是否准备好新地区需要的付款和账单信息"], [
     { title: "先处理账户里的遗留项目", body: "余额、仍在有效期内的订阅、家庭共享和正在处理的退款，都是常见拦路项。先逐一处理，别急着反复点切换。" },
     { title: "在 iPhone 打开国家或地区设置", body: "打开“设置”，点自己的名字，进入“媒体与购买项目”与“查看账户”，再找到“国家或地区”。不同系统版本的文字可能略有区别。" },
@@ -396,6 +400,24 @@ export const articles: Article[] = [
   ], [{ q: "卸载重装能解除限制吗？", a: "通常不能。限制与登录请求和账号状态有关，不只是本地应用问题。" }, { q: "不停换网络有用吗？", a: "不一定，还可能让登录行为更异常。按页面要求等待更稳妥。" }], { cta: "social-account" }),
   ...expansionArticles,
 ];
+
+export const articles: Article[] = baseArticles.map((item) => {
+  const articleKey = `${item.category}/${item.slug}`;
+  const deep = deepArticleContent[articleKey];
+  if (!deep) return item;
+  const additions = deepArticleAdditions[articleKey] ?? [];
+  const finalSections = deepArticleFinalSections[articleKey] ?? [];
+  const extraSections = [...additions, ...finalSections];
+  const expandedDeep = extraSections.length ? { ...deep, sections: [...deep.sections, ...extraSections] } : deep;
+  return {
+    ...item,
+    title: deep.title,
+    description: deep.description,
+    answer: deep.answer,
+    faqs: deep.faqs,
+    deep: expandedDeep,
+  };
+});
 
 export const getCategory = (slug: string) => categories.find((item) => item.slug === slug);
 export const getArticle = (category: string, slug: string) => articles.find((item) => item.category === category && item.slug === slug);

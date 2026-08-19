@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles, categories } from "../lib/content";
-const base = "https://youzhao-guide.com";
+const base = "https://youzhao-guide.hotbirdnet.chatgpt.site";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: base, lastModified: new Date("2026-08-19"), changeFrequency: "weekly", priority: 1 },

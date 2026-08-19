@@ -3,7 +3,7 @@ import "./globals.css";
 import { SiteFooter, SiteHeader } from "../components/site-header";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://youzhao-guide.com"),
+  metadataBase: new URL("https://youzhao-guide.hotbirdnet.chatgpt.site"),
   title: {
     default: "Apple ID、海外 App 和 AI 工具使用教程 - 有招",
     template: "%s - 有招",

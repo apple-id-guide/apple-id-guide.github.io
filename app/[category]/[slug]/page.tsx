@@ -67,7 +67,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
               <ol className="blog-steps">{item.steps.map((step) => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>
             </section>
 
-            {item.cta && <Cta type={item.cta} />}
+            {item.cta && <Cta type={item.cta} source={`${item.category}/${item.slug}`} />}
 
             <section id="faq" className="content-section">
               <h2>你可能还会问</h2>

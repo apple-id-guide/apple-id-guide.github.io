@@ -32,7 +32,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
     description: item.description,
     datePublished: item.date,
     dateModified: item.date,
-    author: { "@type": "Organization", name: "有招指南" },
+    author: { "@type": "Organization", name: "有招" },
     mainEntityOfPage: `/${item.category}/${item.slug}`,
   };
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: item.faqs.map((faq) => ({ "@type": "Question", name: faq.q, acceptedAnswer: { "@type": "Answer", text: faq.a } })) };
@@ -40,47 +40,37 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <article className="article-page">
+      <article className="article-page blog-article">
         <header className="article-head wrap article-wrap">
           <div className="breadcrumbs"><a href="/">首页</a><span>/</span><a href={`/${item.category}`}>{category?.name}</a></div>
-          <span className="kicker">{category?.name} · 解决办法</span>
+          <a className="article-category" href={`/${item.category}`}>{category?.name}</a>
           <h1>{item.title}</h1>
           <p className="dek">{item.description}</p>
-          <div className="article-meta">更新于 {item.date.replaceAll("-", ".")}</div>
+          <div className="article-meta">{item.date.replaceAll("-", ".")} · 阅读约 6 分钟</div>
         </header>
 
         <div className="wrap article-layout">
           <div className="article-content">
-            <section className="answer-box">
-              <span>先说结论</span>
-              <p>{item.answer}</p>
-            </section>
-
-            <nav className="toc" aria-label="文章目录">
-              <strong>这篇文章讲什么</strong>
-              <a href="#check">先检查这些</a>
-              <a href="#steps">具体怎么处理</a>
-              <a href="#faq">常见问题</a>
-            </nav>
+            <div className="article-opening">
+              <p className="lead">{item.answer}</p>
+              <p>先别急着重复操作。这个问题通常可以从几个明确的方向排查，按下面的顺序处理，会比到处试偏方省事。</p>
+            </div>
 
             <section id="check" className="content-section">
-              <span className="section-index">01</span>
-              <h2>先检查这些，别急着反复操作</h2>
-              <p>先把下面几项对一遍。很多问题不是操作步骤错了，而是前置条件还没有满足。</p>
-              <ul className="check-list">{item.checklist.map((check) => <li key={check}>{check}</li>)}</ul>
+              <h2>先把这几项对一遍</h2>
+              <p>很多时候不是操作步骤错了，而是前置条件还没有满足。先检查：</p>
+              <ul className="blog-list">{item.checklist.map((check) => <li key={check}>{check}</li>)}</ul>
             </section>
 
             <section id="steps" className="content-section">
-              <span className="section-index">02</span>
               <h2>具体怎么处理</h2>
-              <div className="steps">{item.steps.map((step, index) => <div className="step" key={step.title}><span>{index + 1}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></div>)}</div>
+              <ol className="blog-steps">{item.steps.map((step) => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>
             </section>
 
             {item.cta && <Cta type={item.cta} />}
 
             <section id="faq" className="content-section">
-              <span className="section-index">03</span>
-              <h2>常见问题</h2>
+              <h2>你可能还会问</h2>
               <div className="faq-list">{item.faqs.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</div>
             </section>
 

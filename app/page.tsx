@@ -18,7 +18,7 @@ export default function Home() {
           <div className="hero-copy">
             <span className="kicker">遇到问题，直接找办法</span>
             <h1>Apple ID、海外 App 和<br />AI 工具使用教程</h1>
-            <p>改不了地区、商店搜不到、付款失败、验证码收不到？别急，这里不绕弯子，按问题给你说明白。</p>
+            <p>改不了地区、商店搜不到、付款失败、验证码收不到？Apple、AI 工具、海外社交平台和 Google 服务，按问题给你说明白。</p>
           </div>
           <div className="hero-search">
             <SearchBox />
@@ -40,12 +40,12 @@ export default function Home() {
       <section className="section section-tint">
         <div className="wrap">
           <div className="section-heading"><div><span className="eyebrow">按产品找</span><h2>你现在卡在哪一类问题？</h2></div></div>
-          <div className="category-grid">
+          <div className="category-grid expanded">
             {categories.map((category, index) => {
               const items = getCategoryArticles(category.slug).slice(0, 4);
               return (
                 <article className={`category-card tone-${index + 1}`} key={category.slug}>
-                  <div className="category-number">0{index + 1}</div>
+                  <div className="category-number">{String(index + 1).padStart(2, "0")}</div>
                   <h3><a href={`/${category.slug}`}>{category.name}</a></h3>
                   <p>{category.description}</p>
                   <ul>{items.map((item) => <li key={item.slug}><a href={articleHref(item)}>{item.title.replace(/[？?].*$/, "")}</a></li>)}</ul>

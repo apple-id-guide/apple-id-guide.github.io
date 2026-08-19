@@ -75,6 +75,8 @@ main { min-height: 70vh; }
 .category-card ul { display: grid; gap: 10px; margin: 24px 0; padding: 20px 0; border-block: 1px solid rgba(23,32,30,.1); list-style: none; font-size: 13px; line-height: 1.5; }
 .category-card li a:hover { color: var(--brand); }
 .tone-1 { background: #f7e9cf; }.tone-2 { background: #dfeef1; }.tone-3 { background: #dcece4; }.tone-4 { background: #e9e4f1; }.tone-5 { background: #dcecf5; }
+.category-grid.expanded { grid-template-columns: repeat(3, 1fr); }
+.category-grid.expanded .category-card { min-height: 355px; }
 .symptom-section { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; align-items: center; }
 .symptom-section p { color: var(--muted); }
 .symptom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -144,6 +146,27 @@ main { min-height: 70vh; }
 .sticky-box a { color: var(--muted); }
 .sticky-box a:hover { color: var(--brand); }
 .sticky-box hr { width: 100%; border: 0; border-top: 1px solid var(--line); }
+.blog-article .article-head { max-width: 860px; padding-top: 58px; }
+.blog-article .article-head h1 { max-width: 820px; margin-top: 14px; font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: clamp(36px, 4.7vw, 56px); line-height: 1.2; letter-spacing: -.04em; }
+.article-category { display: inline-block; color: var(--brand); font-size: 14px; font-weight: 850; }
+.blog-article .dek { max-width: 760px; margin-top: 22px; font-size: 17px; }
+.blog-article .article-layout { grid-template-columns: minmax(0, 700px) 240px; max-width: 1040px; padding-top: 42px; }
+.article-opening { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.article-opening p { color: #4f5a57; font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: 18px; line-height: 2; }
+.article-opening .lead { margin-top: 0; color: var(--ink); font-size: 21px; font-weight: 700; line-height: 1.9; }
+.blog-article .content-section { padding-top: 58px; }
+.blog-article .content-section h2 { margin-bottom: 18px; font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: 30px; letter-spacing: -.025em; }
+.blog-article .content-section > p, .blog-article .blog-list, .blog-article .blog-steps p, .blog-article .faq-list p { font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: 17px; line-height: 2; }
+.blog-list { margin: 20px 0 0; padding-left: 1.35em; }
+.blog-list li { margin: 10px 0; padding-left: 5px; }
+.blog-list li::marker { color: var(--brand); }
+.blog-steps { margin: 0; padding-left: 1.7em; }
+.blog-steps li { margin: 0 0 34px; padding-left: 10px; }
+.blog-steps li::marker { color: var(--brand); font-size: 18px; font-weight: 900; }
+.blog-steps h3 { margin: 0 0 8px; font-size: 20px; }
+.blog-steps p { margin: 0; color: #4f5a57; }
+.blog-article .cta-box { margin-top: 58px; border-radius: 4px; }
+.blog-article .faq-list summary { font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; }
 .search-page { max-width: 850px; min-height: 70vh; }
 .search-page h1, .legal-page h1 { margin: 14px 0; font-size: clamp(40px, 6vw, 68px); letter-spacing: -.055em; }
 .search-page > p, .legal-page p { color: var(--muted); font-size: 17px; line-height: 1.85; }
@@ -167,8 +190,11 @@ main { min-height: 70vh; }
   .hero { min-height: auto; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .category-grid.expanded { grid-template-columns: repeat(2, 1fr); }
   .category-card:last-child { grid-column: 1 / -1; min-height: auto; }
+  .category-grid.expanded .category-card:last-child { grid-column: auto; }
   .article-layout { grid-template-columns: minmax(0,1fr); }
+  .blog-article .article-layout { grid-template-columns: minmax(0,1fr); }
   .article-aside { display: none; }
 }
 
@@ -186,11 +212,13 @@ main { min-height: 70vh; }
   .section { padding-block: 65px; }
   .section-heading { align-items: start; flex-direction: column; }
   .card-grid, .card-grid.two, .category-grid, .latest-list, .symptom-grid, .related-grid { grid-template-columns: 1fr; }
+  .category-grid.expanded { grid-template-columns: 1fr; }
   .category-card:last-child { grid-column: auto; }
   .category-card { min-height: auto; }
   .symptom-section { grid-template-columns: 1fr; gap: 32px; }
   .channel-hero { padding-block: 48px; }
   .channel-hero h1, .article-head h1 { font-size: 41px; }
+  .blog-article .article-head h1 { font-size: 36px; }
   .channel-layout { grid-template-columns: 1fr; }
   .channel-aside { position: static; }
   .article-head { padding-top: 42px; }

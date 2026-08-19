@@ -4,12 +4,11 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="wrap header-inner">
-        <a className="brand" href="/" aria-label="有招指南首页">
+        <a className="brand" href="/" aria-label="有招首页">
           <span className="brand-mark">有招</span>
-          <span className="brand-sub">指南</span>
         </a>
         <nav className="nav" aria-label="主导航">
-          {categories.map((category) => (
+          {categories.filter((category) => ["apple-id", "app-store", "chatgpt", "telegram", "twitter", "gmail", "apple-gift-card"].includes(category.slug)).map((category) => (
             <a key={category.slug} href={`/${category.slug}`}>{category.name}</a>
           ))}
         </nav>
@@ -24,8 +23,8 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="wrap footer-grid">
         <div>
-          <a className="footer-brand" href="/">有招指南</a>
-          <p>Apple ID、海外 App 和 AI 工具，遇到问题直接找办法。</p>
+          <a className="footer-brand" href="/">有招</a>
+          <p>Apple ID、海外 App、AI 工具和 Google 服务，遇到问题直接找办法。</p>
         </div>
         <div>
           <h2>常用频道</h2>
@@ -39,7 +38,7 @@ export function SiteFooter() {
           <a href="/sitemap.xml">网站地图</a>
         </div>
       </div>
-      <div className="wrap copyright">© 2026 有招指南 · 产品名称与商标归各自权利人所有</div>
+      <div className="wrap copyright">© 2026 有招 · 产品名称与商标归各自权利人所有</div>
     </footer>
   );
 }

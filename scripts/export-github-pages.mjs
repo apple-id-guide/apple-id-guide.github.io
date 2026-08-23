@@ -23,14 +23,10 @@ await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
 await cp(path.resolve("dist/client"), outputDir, { recursive: true });
 
-const server = spawn("npm", ["start"], {
+const server = spawn(path.resolve("node_modules/.bin/vinext"), ["start"], {
   env: { ...process.env, PORT: String(port) },
-  stdio: ["ignore", "pipe", "pipe"],
+  stdio: "ignore",
 });
-
-let serverOutput = "";
-server.stdout.on("data", (chunk) => { serverOutput += chunk.toString(); });
-server.stderr.on("data", (chunk) => { serverOutput += chunk.toString(); });
 
 try {
   await waitForServer();
@@ -73,7 +69,7 @@ async function waitForServer() {
     } catch {}
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
-  throw new Error(`Production server did not start.\n${serverOutput}`);
+  throw new Error("Production server did not start within 30 seconds.");
 }
 
 function makeStaticHtml(source, route) {

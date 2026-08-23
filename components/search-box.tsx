@@ -25,7 +25,7 @@ export function SearchBox({ full = false }: { full?: boolean }) {
       </div>
       {(query || full) && (
         <div className="search-results" aria-live="polite">
-          {results.length ? results.slice(0, full ? 30 : 6).map((item) => (
+          {results.length ? results.slice(0, full ? results.length : 6).map((item) => (
             <a href={articleHref(item)} key={`${item.category}-${item.slug}`}>
               <small>{getCategory(item.category)?.name}</small>
               <strong>{item.title}</strong>
@@ -36,4 +36,3 @@ export function SearchBox({ full = false }: { full?: boolean }) {
     </div>
   );
 }
-

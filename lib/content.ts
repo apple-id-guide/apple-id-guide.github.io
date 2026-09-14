@@ -1,5 +1,6 @@
 import { deepArticleContent, type DeepArticleContent } from "./deep-content";
 import { deepArticleAdditions, deepArticleFinalSections } from "./deep-additions";
+import { priorityDeepContent } from "./priority-deep-content";
 
 export type Faq = { q: string; a: string };
 
@@ -401,16 +402,37 @@ const baseArticles: Article[] = [
   ...expansionArticles,
 ];
 
+const additionalPromotions: Record<string, PromotionType> = {
+  "apple-id/us-account-register": "app-access",
+  "apple-id/payment-declined": "region-switch",
+  "app-store/cannot-download-apps": "app-access",
+  "app-store/verification-required": "region-switch",
+  "chatgpt/cancel-subscription": "ai-market",
+  "codex/install": "ai-market",
+  "codex/windows-install": "ai-market",
+  "codex/command-not-found": "ai-market",
+  "telegram/download": "social-account",
+  "telegram/login": "social-account",
+  "twitter/account-suspended": "social-account",
+  "twitter/change-username": "social-account",
+  "instagram/cannot-login": "social-account",
+  "instagram/account-disabled": "social-account",
+  "gmail/cannot-login": "google-account",
+  "apple-gift-card/redeem-failed": "gift-card",
+  "apple-gift-card/check-balance": "gift-card",
+};
+
 export const articles: Article[] = baseArticles.map((item) => {
   const articleKey = `${item.category}/${item.slug}`;
-  const deep = deepArticleContent[articleKey];
-  if (!deep) return item;
+  const deep = priorityDeepContent[articleKey] ?? deepArticleContent[articleKey];
+  const promotedItem = { ...item, cta: item.cta ?? additionalPromotions[articleKey] };
+  if (!deep) return promotedItem;
   const additions = deepArticleAdditions[articleKey] ?? [];
   const finalSections = deepArticleFinalSections[articleKey] ?? [];
   const extraSections = [...additions, ...finalSections];
   const expandedDeep = extraSections.length ? { ...deep, sections: [...deep.sections, ...extraSections] } : deep;
   return {
-    ...item,
+    ...promotedItem,
     title: deep.title,
     description: deep.description,
     answer: deep.answer,

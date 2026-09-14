@@ -137,6 +137,10 @@ main { min-height: 70vh; }
 .cta-box h2 { margin: 8px 0; font-size: 25px; letter-spacing: -.03em; }
 .cta-box p { margin: 0; color: #6d6559; line-height: 1.7; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+.purchase-section { padding-top: 0; }
+.purchase-box { margin-top: 0; }
+.purchase-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.purchase-links .button { white-space: normal; text-align: center; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 19px; color: var(--white); background: var(--brand); border-radius: 9px; font-size: 14px; font-weight: 850; white-space: nowrap; }
 .button:hover { background: var(--brand-dark); }
 .button-secondary { color: var(--brand); background: rgba(255, 255, 255, .66); border: 1px solid #d6b98f; }
@@ -248,6 +252,7 @@ main { min-height: 70vh; }
   .step > span { width: 34px; height: 34px; }
   .cta-box { grid-template-columns: 1fr; padding: 24px; }
   .cta-actions { justify-content: flex-start; }
+  .purchase-links { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 38px; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
 }

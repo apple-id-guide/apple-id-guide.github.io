@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArticleCard } from "../components/article-card";
 import { SearchBox } from "../components/search-box";
+import { PurchaseLinks } from "../components/cta";
 import { articles, categories, getCategoryArticles, articleHref } from "../lib/content";
 
 export const metadata: Metadata = {
@@ -67,6 +68,10 @@ export default function Home() {
           <a href="/telegram/code-not-received">收不到验证码</a>
           <a href="/codex/command-not-found">安装后找不到命令</a>
         </div>
+      </section>
+
+      <section className="section wrap purchase-section">
+        <PurchaseLinks source="home" />
       </section>
 
       <section className="section dark-section">

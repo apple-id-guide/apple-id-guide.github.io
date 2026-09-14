@@ -1,74 +1,79 @@
 import type { PromotionType } from "../lib/content";
 
-type Offer = {
-  eyebrow: string;
-  title: string;
-  body: string;
+type Link = {
   href: "https://idgaiqu.com" | "https://waiquid.com";
   label: string;
-  secondary?: {
-    href: "https://idgaiqu.com" | "https://waiquid.com";
-    label: string;
+  content: string;
+  secondary?: boolean;
+};
+
+type Offer = { eyebrow: string; title: string; body: string; links: Link[] };
+
+const socialNames: Record<string, string> = {
+  telegram: "Telegram 账号",
+  twitter: "Twitter / X 账号",
+  instagram: "Instagram 账号",
+  tiktok: "TikTok 账号",
+};
+
+function offerFor(type: PromotionType, source: string): Offer {
+  const category = source.split("/")[0];
+  if (type === "region-switch") return {
+    eyebrow: "自己改区一直失败？",
+    title: "不想继续折腾，可以直接用改区工具",
+    body: "先按上面把余额、订阅和家庭共享处理好，再去 ID 改区助手操作自己的 Apple ID。",
+    links: [{ href: "https://idgaiqu.com", label: "去处理 Apple ID 改区", content: "apple-id-region-switch" }],
   };
-};
+  if (type === "app-access") return {
+    eyebrow: "只想下载外区 App？",
+    title: "不一定非要反复折腾自己的 Apple ID",
+    body: "想继续用自己的账号，就去处理 Apple ID 改区；只想下载外区 App，可以直接买一个对应地区的 Apple ID。",
+    links: [
+      { href: "https://idgaiqu.com", label: "去处理 Apple ID 改区", content: "apple-id-region-switch" },
+      { href: "https://waiquid.com", label: "去购买外区 Apple ID", content: "foreign-apple-id", secondary: true },
+    ],
+  };
+  if (type === "ai-market") return {
+    eyebrow: "订阅和付款还是卡住？",
+    title: "不想自己折腾，可以直接买 AI 会员",
+    body: "WaiQuid 有 ChatGPT 等 AI 会员和账号。下单前先看清交付方式、使用说明和售后时间。",
+    links: [{ href: "https://waiquid.com", label: "去购买 ChatGPT 等 AI 会员", content: "ai-membership" }],
+  };
+  if (type === "social-account") {
+    const product = socialNames[category] ?? "海外社交账号";
+    return {
+      eyebrow: "注册半天还是不行？",
+      title: `也可以直接买一个 ${product}`,
+      body: `WaiQuid 有 ${product}。购买前看清账号类型和售后时间，拿到账号后及时改掉能修改的安全资料。`,
+      links: [{ href: "https://waiquid.com", label: `去购买 ${product}`, content: category || "social-account" }],
+    };
+  }
+  if (type === "google-account") return {
+    eyebrow: "Google 账号一直注册不下来？",
+    title: "不想反复收验证码，可以直接买 Google 邮箱账号",
+    body: "WaiQuid 有 Google 邮箱账号。下单前看清是否带恢复资料、怎么登录和售后时间。",
+    links: [{ href: "https://waiquid.com", label: "去购买 Google 邮箱账号", content: "google-account" }],
+  };
+  return {
+    eyebrow: "礼品卡地区确认好了？",
+    title: "选对地区和面额，就可以直接购买",
+    body: "WaiQuid 有美国、香港、日本等地区的苹果礼品卡。卡的地区必须和 Apple ID 地区一致，买错地区不能直接兑换。",
+    links: [{ href: "https://waiquid.com", label: "去购买苹果礼品卡", content: "apple-gift-card" }],
+  };
+}
 
-const offers: Record<PromotionType, Offer> = {
-  "region-switch": {
-    eyebrow: "不想继续手动折腾",
-    title: "前置条件都处理完了，还卡在改区这一步？",
-    body: "如果要保留自己的 Apple ID，可以了解自动改区方案。余额、订阅和家庭共享仍要先按本文处理好。",
-    href: "https://idgaiqu.com",
-    label: "看看自动改区方案",
-  },
-  "app-access": {
-    eyebrow: "还有两种省事办法",
-    title: "确认是商店地区问题，不必一直重复搜索",
-    body: "想继续使用本人账号，可以处理 App Store 地区；只想单独下载外区应用，也可以另备一个外区账号。",
-    href: "https://idgaiqu.com",
-    label: "用本人账号改区",
-    secondary: { href: "https://waiquid.com", label: "看看外区账号" },
-  },
-  "ai-market": {
-    eyebrow: "自己付款仍然没走通",
-    title: "也可以看看其他 AI 会员和账号方案",
-    body: "先把扣款状态、账号和账单资料查清，避免重复付款。确实需要替代方案时，再按自己的用途选择。",
-    href: "https://waiquid.com",
-    label: "看看可用方案",
-  },
-  "social-account": {
-    eyebrow: "注册或验证一直卡住",
-    title: "暂时解决不了，也可以了解现成账号方案",
-    body: "优先按本文找回或注册自己的账号。仍然需要新账号时，购买前看清使用说明、售后期限，并及时完善安全资料。",
-    href: "https://waiquid.com",
-    label: "看看账号方案",
-  },
-  "google-account": {
-    eyebrow: "手机号验证一直过不去",
-    title: "需要新的 Google 账号，也可以换一种处理方式",
-    body: "先按本文排除号码格式、使用次数和短信延迟。仍然无法创建时，再了解其他账号方案。",
-    href: "https://waiquid.com",
-    label: "看看 Google 账号方案",
-  },
-  "gift-card": {
-    eyebrow: "准备给外区账号充值",
-    title: "地区已经确认一致，再选择对应礼品卡",
-    body: "礼品卡和 Apple ID 商店地区必须匹配。先确认地区和币种，再查看可用面额，不要把完整卡密发给陌生人。",
-    href: "https://waiquid.com",
-    label: "看看苹果礼品卡",
-  },
-};
-
-function trackedUrl(destination: Offer["href"], source: string) {
+function trackedUrl(destination: Link["href"], source: string, content: string) {
   const url = new URL(destination);
-  url.searchParams.set("utm_source", "youzhao");
+  url.searchParams.set("utm_source", "apple-id-guide");
   url.searchParams.set("utm_medium", "content");
   url.searchParams.set("utm_campaign", source.replace("/", "-"));
+  url.searchParams.set("utm_content", content);
   return url.toString();
 }
 
 export function Cta({ type, source }: { type?: PromotionType; source: string }) {
   if (!type) return null;
-  const offer = offers[type];
+  const offer = offerFor(type, source);
   return (
     <aside className="cta-box">
       <div>
@@ -77,14 +82,35 @@ export function Cta({ type, source }: { type?: PromotionType; source: string }) 
         <p>{offer.body}</p>
       </div>
       <div className="cta-actions">
-        <a className="button" href={trackedUrl(offer.href, source)} target="_blank" rel="sponsored noreferrer">
-          {offer.label}
-        </a>
-        {offer.secondary && (
-          <a className="button button-secondary" href={trackedUrl(offer.secondary.href, source)} target="_blank" rel="sponsored noreferrer">
-            {offer.secondary.label}
+        {offer.links.map((link) => (
+          <a className={`button${link.secondary ? " button-secondary" : ""}`} href={trackedUrl(link.href, source, link.content)} target="_blank" rel="sponsored noreferrer" key={`${link.href}-${link.content}`}>
+            {link.label}
           </a>
-        )}
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+export function PurchaseLinks({ source = "home" }: { source?: string }) {
+  const products = [
+    ["去购买外区 Apple ID", "foreign-apple-id"],
+    ["去购买海外社交账号", "social-account"],
+    ["去购买 Google 邮箱账号", "google-account"],
+    ["去购买 ChatGPT 等 AI 会员", "ai-membership"],
+    ["去购买苹果礼品卡", "apple-gift-card"],
+  ];
+  return (
+    <aside className="cta-box purchase-box">
+      <div>
+        <span className="eyebrow">不想自己折腾</span>
+        <h2>需要账号、AI 会员或礼品卡，可以直接买</h2>
+        <p>按自己需要的类型下单。付款前先看清商品说明、交付方式和售后时间。</p>
+      </div>
+      <div className="purchase-links">
+        {products.map(([label, content]) => (
+          <a className="button" href={trackedUrl("https://waiquid.com", source, content)} target="_blank" rel="sponsored noreferrer" key={content}>{label}</a>
+        ))}
       </div>
     </aside>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { ArticleCard } from "../../../components/article-card";
 import { Cta } from "../../../components/cta";
 import { articles, getArticle, getCategory, relatedArticles } from "../../../lib/content";
@@ -11,11 +12,14 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const route = await params;
   const item = getArticle(route.category, route.slug);
   if (!item) return { title: "文章不存在" };
+  const description = item.description.length < 55
+    ? `${item.description}下面把常见原因、检查顺序和具体操作一次说清楚，照着做就行。`
+    : item.description;
   return {
     title: item.title,
-    description: item.description,
+    description,
     alternates: { canonical: `/${item.category}/${item.slug}` },
-    openGraph: { type: "article", title: item.title, description: item.description, publishedTime: item.date },
+    openGraph: { type: "article", title: item.title, description, publishedTime: item.date },
   };
 }
 
@@ -59,21 +63,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
             {item.deep ? (
               <>
                 {item.deep.sections.map((section, sectionIndex) => (
-                  <section id={`section-${sectionIndex + 1}`} className="content-section deep-section" key={section.title}>
-                    <h2>{section.title}</h2>
-                    {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    {section.table && (
-                      <div className="article-table-wrap">
-                        <table className="article-table">
-                          <thead><tr>{section.table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead>
-                          <tbody>{section.table.rows.map((row) => <tr key={row.join("-")}>{row.map((cell, index) => <td key={`${cell}-${index}`}>{cell}</td>)}</tr>)}</tbody>
-                        </table>
-                      </div>
-                    )}
-                    {section.bullets && <ul className="blog-list">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
-                    {section.steps && <ol className="blog-steps">{section.steps.map((step) => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>}
-                    {section.note && <p className="article-note"><strong>提醒：</strong>{section.note}</p>}
-                  </section>
+                  <Fragment key={section.title}>
+                    <section id={`section-${sectionIndex + 1}`} className="content-section deep-section">
+                      <h2>{section.title}</h2>
+                      {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                      {section.table && (
+                        <div className="article-table-wrap">
+                          <table className="article-table">
+                            <thead><tr>{section.table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead>
+                            <tbody>{section.table.rows.map((row) => <tr key={row.join("-")}>{row.map((cell, index) => <td key={`${cell}-${index}`}>{cell}</td>)}</tr>)}</tbody>
+                          </table>
+                        </div>
+                      )}
+                      {section.bullets && <ul className="blog-list">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
+                      {section.steps && <ol className="blog-steps">{section.steps.map((step) => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>}
+                      {section.note && <p className="article-note"><strong>提醒：</strong>{section.note}</p>}
+                    </section>
+                    {sectionIndex === 1 && item.cta && <Cta type={item.cta} source={`${item.category}/${item.slug}`} />}
+                  </Fragment>
                 ))}
                 <section className="content-section article-sources">
                   <h2>参考来源</h2>
@@ -89,14 +96,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                   <ul className="blog-list">{item.checklist.map((check) => <li key={check}>{check}</li>)}</ul>
                 </section>
 
+                {item.cta && <Cta type={item.cta} source={`${item.category}/${item.slug}`} />}
+
                 <section id="steps" className="content-section">
                   <h2>具体怎么处理</h2>
                   <ol className="blog-steps">{item.steps.map((step) => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p></li>)}</ol>
                 </section>
               </>
             )}
-
-            {item.cta && <Cta type={item.cta} source={`${item.category}/${item.slug}`} />}
 
             <section id="faq" className="content-section">
               <h2>你可能还会问</h2>

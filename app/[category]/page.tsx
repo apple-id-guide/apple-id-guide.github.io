@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArticleCard } from "../../components/article-card";
+import { PurchaseLinks } from "../../components/cta";
 import { categories, getCategory, getCategoryArticles } from "../../lib/content";
 
 export async function generateStaticParams() {
@@ -38,6 +39,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           <strong>先看这几篇</strong>
           <ol>{items.slice(0, 5).map((item) => <li key={item.slug}><a href={`/${item.category}/${item.slug}`}>{item.title}</a></li>)}</ol>
         </aside>
+      </section>
+      <section className="section wrap purchase-section">
+        <PurchaseLinks source={`channel-${category.slug}`} />
       </section>
     </>
   );

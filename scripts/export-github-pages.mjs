@@ -5,8 +5,8 @@ import { articles, categories } from "../lib/content.ts";
 
 const port = Number(process.env.EXPORT_PORT ?? 4173);
 const origin = `http://127.0.0.1:${port}`;
-const basePath = normalizeBase(process.env.GITHUB_PAGES_BASE ?? "/youzhao-guide");
-const siteUrl = (process.env.SITE_URL ?? `https://gudanxn.github.io${basePath}`).replace(/\/$/, "");
+const basePath = normalizeBase(process.env.GITHUB_PAGES_BASE ?? "");
+const siteUrl = (process.env.SITE_URL ?? `https://apple-id-guide.github.io${basePath}`).replace(/\/$/, "");
 const outputDir = path.resolve("public-github");
 
 const pageRoutes = [

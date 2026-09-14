@@ -26,8 +26,8 @@ jobs:
       - run: npm ci
       - run: npm run build:github-pages
         env:
-          GITHUB_PAGES_BASE: /youzhao-guide
-          SITE_URL: https://gudanxn.github.io/youzhao-guide
+          GITHUB_PAGES_BASE: /
+          SITE_URL: https://apple-id-guide.github.io
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

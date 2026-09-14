@@ -1,6 +1,7 @@
 import { deepArticleContent, type DeepArticleContent } from "./deep-content";
 import { deepArticleAdditions, deepArticleFinalSections } from "./deep-additions";
 import { priorityDeepContent } from "./priority-deep-content";
+import generatedArticlesData from "../content/generated-articles.json";
 
 export type Faq = { q: string; a: string };
 
@@ -422,7 +423,7 @@ const additionalPromotions: Record<string, PromotionType> = {
   "apple-gift-card/check-balance": "gift-card",
 };
 
-export const articles: Article[] = baseArticles.map((item) => {
+const editorialArticles: Article[] = baseArticles.map((item) => {
   const articleKey = `${item.category}/${item.slug}`;
   const deep = priorityDeepContent[articleKey] ?? deepArticleContent[articleKey];
   const promotedItem = { ...item, cta: item.cta ?? additionalPromotions[articleKey] };
@@ -440,6 +441,10 @@ export const articles: Article[] = baseArticles.map((item) => {
     deep: expandedDeep,
   };
 });
+
+const generatedArticles = generatedArticlesData as Article[];
+
+export const articles: Article[] = [...generatedArticles, ...editorialArticles];
 
 export const getCategory = (slug: string) => categories.find((item) => item.slug === slug);
 export const getArticle = (category: string, slug: string) => articles.find((item) => item.category === category && item.slug === slug);

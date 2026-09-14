@@ -82,11 +82,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
                     {sectionIndex === 1 && item.cta && <Cta type={item.cta} source={`${item.category}/${item.slug}`} />}
                   </Fragment>
                 ))}
-                <section className="content-section article-sources">
+                {item.deep.sources.length > 0 && <section className="content-section article-sources">
                   <h2>参考来源</h2>
                   <p>产品规则和页面入口可能调整，关键限制以官方当前页面为准：</p>
                   <ul>{item.deep.sources.map((source) => <li key={source.href}><a href={source.href} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>
-                </section>
+                </section>}
               </>
             ) : (
               <>

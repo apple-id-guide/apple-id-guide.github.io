@@ -348,5 +348,12 @@
     "keyword": "twitter api 购买",
     "intent": "用户想了解 X/Twitter API 的付费套餐、价格和购买流程，适合写中文教程并引导到官方开发者平台注册和购买。",
     "cta": "social-account"
+  },
+  {
+    "category": "instagram",
+    "slug": "cannot-register",
+    "keyword": "instagram怎么注册不了",
+    "intent": "用户想排查 Instagram 注册失败的原因，并找到可操作的注册流程与解决方法，适合做注册问题教程并引导账号相关服务。",
+    "cta": "social-account"
   }
 ]

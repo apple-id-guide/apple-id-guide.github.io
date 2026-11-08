@@ -355,5 +355,12 @@
     "keyword": "instagram怎么注册不了",
     "intent": "用户想排查 Instagram 注册失败的原因，并找到可操作的注册流程与解决方法，适合做注册问题教程并引导账号相关服务。",
     "cta": "social-account"
+  },
+  {
+    "category": "gmail",
+    "slug": "change-username",
+    "keyword": "gmail怎么改邮箱账号名",
+    "intent": "用户想把 Gmail 邮箱地址前缀改成别的名字，需要说明 Gmail 不支持直接改名，只能通过创建别名、注册新账号或迁移数据来解决，并给出改显示名、建别名、注册新邮箱的分步操作与注意事项。",
+    "cta": "google-account"
   }
 ]

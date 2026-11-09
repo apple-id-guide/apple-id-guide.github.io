@@ -362,5 +362,12 @@
     "keyword": "gmail怎么改邮箱账号名",
     "intent": "用户想把 Gmail 邮箱地址前缀改成别的名字，需要说明 Gmail 不支持直接改名，只能通过创建别名、注册新账号或迁移数据来解决，并给出改显示名、建别名、注册新邮箱的分步操作与注意事项。",
     "cta": "google-account"
+  },
+  {
+    "category": "youtube",
+    "slug": "youtube-premium-cheapest",
+    "keyword": "youtube premium怎么买便宜",
+    "intent": "用户想了解如何以更低价格订阅 YouTube Premium，比较不同区域价格、家庭组和订阅方案，具有明确购买意图。",
+    "cta": "region-switch"
   }
 ]

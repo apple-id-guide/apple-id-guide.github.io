@@ -369,5 +369,12 @@
     "keyword": "youtube premium怎么买便宜",
     "intent": "用户想了解如何以更低价格订阅 YouTube Premium，比较不同区域价格、家庭组和订阅方案，具有明确购买意图。",
     "cta": "region-switch"
+  },
+  {
+    "category": "apple-gift-card",
+    "slug": "recharge-chatgpt",
+    "keyword": "苹果礼品卡怎么充值gpt",
+    "intent": "面向想用美区 Apple Gift Card 给 ChatGPT Plus 充值或续费的中文用户，讲清礼品卡余额的正确使用路径、常见失败原因和操作步骤，承接购买礼品卡与开通会员意图。",
+    "cta": "gift-card"
   }
 ]

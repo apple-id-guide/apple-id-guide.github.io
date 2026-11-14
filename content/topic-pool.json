@@ -376,5 +376,12 @@
     "keyword": "苹果礼品卡怎么充值gpt",
     "intent": "面向想用美区 Apple Gift Card 给 ChatGPT Plus 充值或续费的中文用户，讲清礼品卡余额的正确使用路径、常见失败原因和操作步骤，承接购买礼品卡与开通会员意图。",
     "cta": "gift-card"
+  },
+  {
+    "category": "codex",
+    "slug": "codex-purchase-guide",
+    "keyword": "codex购买教程",
+    "intent": "用户想了解如何购买或充值 Codex 额度/套餐，寻找可用渠道、购买步骤和注意事项，具有明确的付费转化意图。",
+    "cta": "ai-market"
   }
 ]

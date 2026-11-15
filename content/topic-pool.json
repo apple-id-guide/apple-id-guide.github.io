@@ -383,5 +383,12 @@
     "keyword": "codex购买教程",
     "intent": "用户想了解如何购买或充值 Codex 额度/套餐，寻找可用渠道、购买步骤和注意事项，具有明确的付费转化意图。",
     "cta": "ai-market"
+  },
+  {
+    "category": "telegram",
+    "slug": "telegram-premium-purchase",
+    "keyword": "telegram购买会员",
+    "intent": "面向想开通 Telegram Premium 的中文用户，说明会员价格、购买渠道、支付方式与开通注意事项，帮助完成购买并避免常见支付问题。",
+    "cta": "social-account"
   }
 ]

@@ -390,5 +390,12 @@
     "keyword": "telegram购买会员",
     "intent": "面向想开通 Telegram Premium 的中文用户，说明会员价格、购买渠道、支付方式与开通注意事项，帮助完成购买并避免常见支付问题。",
     "cta": "social-account"
+  },
+  {
+    "category": "gmail",
+    "slug": "google-one-storage-purchase",
+    "keyword": "gmail购买储存空间",
+    "intent": "用户想给 Gmail 扩容，寻找 Google One 存储空间的购买入口、套餐选择与中文支付教程，购买意图明确。",
+    "cta": "google-account"
   }
 ]

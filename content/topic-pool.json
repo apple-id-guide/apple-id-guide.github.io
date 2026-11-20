@@ -397,5 +397,12 @@
     "keyword": "gmail购买储存空间",
     "intent": "用户想给 Gmail 扩容，寻找 Google One 存储空间的购买入口、套餐选择与中文支付教程，购买意图明确。",
     "cta": "google-account"
+  },
+  {
+    "category": "youtube",
+    "slug": "youtube-premium-renewal",
+    "keyword": "youtube premium怎么续订",
+    "intent": "订阅到期或扣款失败后，用户想找到续订入口并完成付款；教程应覆盖续订步骤、付款方式与失败排查。",
+    "cta": "app-access"
   }
 ]

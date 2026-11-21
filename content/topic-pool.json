@@ -404,5 +404,12 @@
     "keyword": "youtube premium怎么续订",
     "intent": "订阅到期或扣款失败后，用户想找到续订入口并完成付款；教程应覆盖续订步骤、付款方式与失败排查。",
     "cta": "app-access"
+  },
+  {
+    "category": "apple-gift-card",
+    "slug": "purchase-failed",
+    "keyword": "苹果礼品卡购买不成功原因",
+    "intent": "用户尝试购买苹果礼品卡时订单或支付失败，想弄清常见原因并找到可执行的解决办法，带有明确的购买意图。",
+    "cta": "gift-card"
   }
 ]

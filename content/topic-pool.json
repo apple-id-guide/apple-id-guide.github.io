@@ -411,5 +411,12 @@
     "keyword": "苹果礼品卡购买不成功原因",
     "intent": "用户尝试购买苹果礼品卡时订单或支付失败，想弄清常见原因并找到可执行的解决办法，带有明确的购买意图。",
     "cta": "gift-card"
+  },
+  {
+    "category": "apple-gift-card",
+    "slug": "app-store-top-up",
+    "keyword": "App Store 怎么储值",
+    "intent": "用户想给 App Store 账户充值或增加余额，用于购买应用、订阅服务或完成付款，适合引导了解礼品卡充值流程与购买方式。",
+    "cta": "gift-card"
   }
 ]

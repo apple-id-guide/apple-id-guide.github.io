@@ -418,5 +418,12 @@
     "keyword": "App Store 怎么储值",
     "intent": "用户想给 App Store 账户充值或增加余额，用于购买应用、订阅服务或完成付款，适合引导了解礼品卡充值流程与购买方式。",
     "cta": "gift-card"
+  },
+  {
+    "category": "chatgpt",
+    "slug": "chatgpt-plus-cheapest",
+    "keyword": "chatgpt plus 怎么买便宜",
+    "intent": "用户想了解以更低成本开通 ChatGPT Plus 的可行方式、价格差异和注意事项，具有明确的购买决策意图。",
+    "cta": "ai-market"
   }
 ]

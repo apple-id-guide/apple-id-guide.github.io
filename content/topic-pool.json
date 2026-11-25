@@ -425,5 +425,12 @@
     "keyword": "chatgpt plus 怎么买便宜",
     "intent": "用户想了解以更低成本开通 ChatGPT Plus 的可行方式、价格差异和注意事项，具有明确的购买决策意图。",
     "cta": "ai-market"
+  },
+  {
+    "category": "codex",
+    "slug": "codex-foreign-card",
+    "keyword": "codex购买要国外的信用卡怎么办",
+    "intent": "用户想购买 Codex 但缺少国外信用卡，寻找可行的支付方式、购买渠道和操作建议，具有明确的付费意图。",
+    "cta": "ai-market"
   }
 ]

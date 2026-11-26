@@ -432,5 +432,12 @@
     "keyword": "codex购买要国外的信用卡怎么办",
     "intent": "用户想购买 Codex 但缺少国外信用卡，寻找可行的支付方式、购买渠道和操作建议，具有明确的付费意图。",
     "cta": "ai-market"
+  },
+  {
+    "category": "telegram",
+    "slug": "buy-telegram-stars",
+    "keyword": "telegram购买星星",
+    "intent": "用户想了解 Telegram Stars 的官方购买方式、支付渠道、到账与使用问题，具有明确的付费和平台内消费意图。",
+    "cta": "social-account"
   }
 ]

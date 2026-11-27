@@ -439,5 +439,12 @@
     "keyword": "telegram购买星星",
     "intent": "用户想了解 Telegram Stars 的官方购买方式、支付渠道、到账与使用问题，具有明确的付费和平台内消费意图。",
     "cta": "social-account"
+  },
+  {
+    "category": "twitter",
+    "slug": "twitter-cannot-login",
+    "keyword": "twitter无法登陆",
+    "intent": "解决 Twitter 无法登录的常见排查步骤，并帮助需要可用账号的用户判断是找回还是更换账号。",
+    "cta": "social-account"
   }
 ]

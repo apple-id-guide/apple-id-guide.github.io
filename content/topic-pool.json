@@ -446,5 +446,12 @@
     "keyword": "twitter无法登陆",
     "intent": "解决 Twitter 无法登录的常见排查步骤，并帮助需要可用账号的用户判断是找回还是更换账号。",
     "cta": "social-account"
+  },
+  {
+    "category": "instagram",
+    "slug": "instagram-open-shop",
+    "keyword": "instagram怎么开店",
+    "intent": "面向想在 Instagram 开店的用户，提供商业账号开通、店铺设置和商品上架的中文教程，承接开店与推广需求。",
+    "cta": "social-account"
   }
 ]
